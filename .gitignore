@@ -1,0 +1,13 @@
+# Be paranoid and ignore everything with an extension.
+*.*
+
+# Allow everything that should be allowed through through.
+!.git*
+
+*.html
+*.css
+*.js
+*.svg
+
+!README.md
+
