@@ -4,10 +4,10 @@
 # Allow everything that should be allowed through through.
 !.git*
 
-*.html
-*.css
-*.js
-*.svg
+!*.html
+!*.css
+!*.js
+!*.svg
 
 !README.md
 
