@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
 
 ::selection {
   background: #dec54c;
@@ -25,8 +25,22 @@ a:hover, a:focus, a:active {
     color: #dec54c;
 }
 
+h1 {
+  font-weight: 300;
+}
+
 .land {
     text-align: center;
+}
+
+.light {
+  background: #fff5e9;
+  color: #18140d
+}
+
+.dark {
+  background: #18140d;
+  color: #fff5e9
 }
 
 #welcome {
