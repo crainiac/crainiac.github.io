@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
 
 ::selection {
-  background: #3c9bf5;
+  background: #dec54c;
   color: #fff5e9;
 }
 
@@ -21,10 +21,10 @@ a:visited {
 }
 
 a:hover, a:focus, a:active { 
-	text-decoration: none; 
-	color: #dec54c;
+    text-decoration: none; 
+    color: #dec54c;
 }
 
 .land {
-	text-align: center;
+    text-align: center;
 }
