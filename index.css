@@ -21,10 +21,10 @@ a:visited {
 }
 
 a:hover, a:focus, a:active { 
-	text-decoration: none; 
-	color: #dec54c;
+    text-decoration: none; 
+    color: #dec54c;
 }
 
 .land {
-	text-align: center;
+    text-align: center;
 }
