@@ -11,40 +11,74 @@ html {
 }
 
 a:link {
-  text-decoration: none; 
+  text-decoration: none;
   color: #3c9bf5;
 }
 
 a:visited {
-  text-decoration: none; 
+  text-decoration: none;
   color: #b5075f;
 }
 
-a:hover, a:focus, a:active { 
-    text-decoration: none; 
-    color: #dec54c;
-}
-
-h1 {
-  font-weight: 300;
+a:hover, a:focus, a:active {
+  text-decoration: none; 
+  color: #dec54c;
 }
 
 .land {
-    text-align: center;
+  text-align: center;
 }
 
 .light {
   background: #fff5e9;
-  color: #18140d
+  color: #18140d;
 }
 
 .dark {
   background: #18140d;
-  color: #fff5e9
+  color: #fff5e9;
 }
 
 #welcome {
   background-image: url('art/brightonday.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
+  color: #fff5e9;
+  background-color: #807a70;
+}
+
+#welcome a:link {
+  text-decoration: none;
+  color: #fff5e9;
+}
+
+#welcome a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #3c9bf5;
+}
+
+#about {
+  background-image: url('art/oneveralready.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
+  color: #fff5e9;
+  background-color: #807a70;
+}
+
+#about a:link {
+  text-decoration: none;
+  color: #dec54c;
+}
+
+#about a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #3c9bf5;
+}
+
+#neveralready {
+  background-image: url('art/neveralready.svg');
   min-height: 100%;
   min-width: 100%;
   background-size: 100% 100%;
