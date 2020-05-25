@@ -132,3 +132,18 @@ a:hover, a:focus, a:active {
   text-decoration: none;
   color: #dec54c;
 }
+
+#blockbg {
+  scale: 69%;
+  background-color: #3c9bf5;
+  color: #004603;
+}
+
+#blockbg a:link {
+  color: #004603;
+}
+
+#blockbg a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #3c9bf5;
+}
