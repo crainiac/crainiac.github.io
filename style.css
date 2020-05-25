@@ -10,6 +10,12 @@ html {
   scrollbar-color: #fff5e9 #18140d;
 }
 
+button {
+  display: inline-block;
+  border: none;
+  text-align: center;
+}
+
 a:link {
   text-decoration: none;
   color: #dec54c;
@@ -34,6 +40,11 @@ a:hover, a:focus, a:active {
   color: #18140d;
 }
 
+.mid {
+  background: #807a70;
+  color: #fff5e9;
+}
+
 .dark {
   background: #18140d;
   color: #fff5e9;
@@ -55,7 +66,7 @@ a:hover, a:focus, a:active {
 
 #welcome a:hover, a:focus, a:active {
   text-decoration: none;
-  color: #dec54c;
+  color: #3c9bf5;
 }
 
 #about {
@@ -76,9 +87,48 @@ a:hover, a:focus, a:active {
   background-color: #807a70;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  text-align: center;
+#blockgb {
+  scale: 69%;
+  background-color: #004603;
+  color: #3c9bf5;
+}
+
+#blockgb a:link {
+  color: #3c9bf5;
+}
+
+#blockgb a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #004603;
+}
+
+#blockry {
+  scale: 69%;
+  background-color: #b5075f;
+  color: #dec54c;
+}
+
+#blockry a:link {
+  color: #dec54c;
+}
+
+#blockry a:hover, a:focus, a:active {
+  scale: 69%;
+  text-decoration: none;
+  color: #b5075f;
+}
+
+#blockyr {
+  scale: 69%;
+  background-color: #dec54c;
+  color: #b5075f;
+}
+
+#blockyr a:link {
+  color: #b5075f;
+}
+
+#blockyr a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #dec54c;
 }
