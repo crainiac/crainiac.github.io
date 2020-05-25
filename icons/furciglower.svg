@@ -1,0 +1,20 @@
+<svg width="256pt" height="256pt" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Given radius R... -->
+  <clipPath id="overlip">
+    <!-- width = 2R, height = R - Rsin(pi/8) -->
+    <rect width="256" height="176.98347934273"/>
+  </clipPath>
+  <defs>
+    <!-- r = 5R/16 -->
+    <g id="eye">
+      <path d="M 40 0 A 40 40 0 0 1 -40 0" fill="#004603"/>
+    </g>
+  </defs>
+  <rect width="256" height="256" fill-opacity="0" fill="#004603"/>
+  <circle cx="128" cy="128" r="128" fill="#dec54c"/>
+  <path d="M 128 256 A 64 64 0 0 0 128 128" fill="#b5075f"/>
+  <circle cx="128" cy="128" r="128" clip-path="url(#overlip)" fill="#3c9bf5"/>
+  <!-- eye_y = 3R/4, left eye_x = 9R/16, right eye_x = 23R/16 -->
+  <use xlink:href="#eye" transform="matrix(1 0 0 1 72 96)"/>
+  <use xlink:href="#eye" transform="matrix(1 0 0 1 184 96)"/>
+</svg>
