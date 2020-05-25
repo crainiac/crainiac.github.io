@@ -10,9 +10,15 @@ html {
   scrollbar-color: #fff5e9 #18140d;
 }
 
+button {
+  display: inline-block;
+  border: none;
+  text-align: center;
+}
+
 a:link {
   text-decoration: none;
-  color: #3c9bf5;
+  color: #dec54c;
 }
 
 a:visited {
@@ -22,7 +28,7 @@ a:visited {
 
 a:hover, a:focus, a:active {
   text-decoration: none; 
-  color: #dec54c;
+  color: #3c9bf5;
 }
 
 .land {
@@ -32,6 +38,11 @@ a:hover, a:focus, a:active {
 .light {
   background: #fff5e9;
   color: #18140d;
+}
+
+.mid {
+  background: #807a70;
+  color: #fff5e9;
 }
 
 .dark {
@@ -45,7 +56,7 @@ a:hover, a:focus, a:active {
   min-width: 100%;
   background-size: 100% 100%;
   color: #fff5e9;
-  background-color: #807a70;
+  background-color: #3c9bf5;
 }
 
 #welcome a:link {
@@ -59,29 +70,98 @@ a:hover, a:focus, a:active {
 }
 
 #about {
+  color: #fff5e9;
+  background-color: #004603;
   background-image: url('art/oneveralready.svg');
   min-height: 100%;
   min-width: 100%;
   background-size: 100% 100%;
-  color: #fff5e9;
-  background-color: #807a70;
-}
-
-#about a:link {
-  text-decoration: none;
-  color: #dec54c;
-}
-
-#about a:hover, a:focus, a:active {
-  text-decoration: none;
-  color: #3c9bf5;
 }
 
 #neveralready {
+  background-color: #004603;
   background-image: url('art/neveralready.svg');
   min-height: 100%;
   min-width: 100%;
   background-size: 100% 100%;
   color: #fff5e9;
-  background-color: #807a70;
+}
+
+#art {
+  color: #fff5e9;
+  background-color: #b5075f;
+  background-image: url('art/oneveralready.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
+}
+
+#problems {
+  color: #fff5e9;
+  background-color: #dec54c;
+  background-image: url('art/oneveralready.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
+}
+
+#blockgb {
+  scale: 69%;
+  background-color: #004603;
+  color: #3c9bf5;
+}
+
+#blockgb a:link {
+  color: #3c9bf5;
+}
+
+#blockgb a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #004603;
+}
+
+#blockry {
+  scale: 69%;
+  background-color: #b5075f;
+  color: #dec54c;
+}
+
+#blockry a:link {
+  color: #dec54c;
+}
+
+#blockry a:hover, a:focus, a:active {
+  scale: 69%;
+  text-decoration: none;
+  color: #b5075f;
+}
+
+#blockyr {
+  scale: 69%;
+  background-color: #dec54c;
+  color: #b5075f;
+}
+
+#blockyr a:link {
+  color: #b5075f;
+}
+
+#blockyr a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #dec54c;
+}
+
+#blockbg {
+  scale: 69%;
+  background-color: #3c9bf5;
+  color: #004603;
+}
+
+#blockbg a:link {
+  color: #004603;
+}
+
+#blockbg a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #3c9bf5;
 }
