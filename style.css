@@ -56,7 +56,7 @@ a:hover, a:focus, a:active {
   min-width: 100%;
   background-size: 100% 100%;
   color: #fff5e9;
-  background-color: #807a70;
+  background-color: #3c9bf5;
 }
 
 #welcome a:link {
@@ -70,21 +70,39 @@ a:hover, a:focus, a:active {
 }
 
 #about {
+  color: #fff5e9;
+  background-color: #004603;
   background-image: url('art/oneveralready.svg');
   min-height: 100%;
   min-width: 100%;
   background-size: 100% 100%;
-  color: #fff5e9;
-  background-color: #807a70;
 }
 
 #neveralready {
+  background-color: #004603;
   background-image: url('art/neveralready.svg');
   min-height: 100%;
   min-width: 100%;
   background-size: 100% 100%;
   color: #fff5e9;
-  background-color: #807a70;
+}
+
+#art {
+  color: #fff5e9;
+  background-color: #b5075f;
+  background-image: url('art/oneveralready.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
+}
+
+#problems {
+  color: #fff5e9;
+  background-color: #dec54c;
+  background-image: url('art/oneveralready.svg');
+  min-height: 100%;
+  min-width: 100%;
+  background-size: 100% 100%;
 }
 
 #blockgb {
