@@ -8,3 +8,10 @@ Inspirations:
 [1] https://arxiv.org/abs/2101.10382
 [2] https://arxiv.org/abs/2206.14486
 [3] https://arxiv.org/abs/0812.4360
+[4] https://www.crain.dev/3.txt
+
+P.S.
+It seems intuitive that the precision of the perplexity estimator matters more as the number of available samples increases.
+
+P.P.S.
+This principle is about learning good representations of data, not the goodness of the data represented, but applying this principle to a Kolmogorov pile [4] could help us to learn the best representation of everything.
