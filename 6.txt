@@ -1,0 +1,11 @@
+Markov Blanket Weaving
+
+Since autoregressive next-token predictor training is O(inference), using inference to augment training data seems like a promising area of applied research. I'm particularly interested in augmenting training data with representations of what the model has learned to represent; combined with the original data from which the model learned the representations, synthetic training data of this nature may possess desirable regularization properties. Here's a way to do this in a curriculum for learning training sequence S: every N epochs, greedily generate the least and most perplexing tokens to construct representation sequences Smin and Smax, reverse Smin and Smax to synthesize sequences Zmin and Zmax, and reconstruct the training sequence as Zmin, Zmax, and S, respectively (by the principle of least perplexity).
+
+In practice, these models can generate multiple token probabilities in parallel (see, e.g., [4]), so any algorithm implementing this curriculum will probably give us all context-filling minimax paths for free. It's worth daydreaming about what we can do with these minimax perplexity trees and their potential connections to Nash equilibria and Markov boundaries.
+
+Inspirations:
+[1] https://en.wikipedia.org/wiki/Markov_blanket
+[2] https://en.wikipedia.org/wiki/Kolmogorov%27s_criterion
+[3] https://www.crain.dev/4.txt
+[4] https://twitter.com/karpathy/status/1697318534555336961
