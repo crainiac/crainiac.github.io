@@ -4,7 +4,7 @@ Since autoregressive next-token predictor (antp) training is O(inference), using
 
 One way to do this in a curriculum for learning sequence S:
 Every N epochs,
-[1] Recursively construct aperiodic sequences (or a tree; see below) Smin and Smax by greedily sampling the least and most perplexing tokens with sequence periodicity as a base case.
+[1] Recursively construct aperiodic sequences (or a tree; see below) Smin and Smax by greedily sampling the least and most perplexing tokens, stopping upon encountering periodicity.
 [2] Reverse Smin and Smax to obtain synthetic training sequences Zmin and Zmax.
 [3] Reconstruct the curriculum sequence as Zmin, Zmax, S.
 
