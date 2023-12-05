@@ -1,0 +1,7 @@
+Data Heads
+
+By analogy to the mythical brazen head automaton, a generative language model may appear to animate data that it groks by providing an entrypoint to learned representations of that data (for example, a data head may hear a prompt and speak its completion in the voice of the data).
+
+Inspirations:
+[1] https://arxiv.org/abs/2210.01117
+[2] https://www.crain.dev/2.txt
