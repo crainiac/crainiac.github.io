@@ -1,6 +1,6 @@
 The Kolmogorov Pile
 
-The holy grail of curriculum learning: the smallest data set necessary to teach a model everything. We can reason about Kolmogorov piles in terms of the limiting behavior of Markov boundaries as information increases.
+The holy grail of curriculum learning: the smallest data set necessary to teach a model everything. We can reason about Kolmogorov piles in terms of the limiting behaviors of Markov boundaries as information increases.
 
 Inspirations (besides Kolmogorov complexity, obviously):
 [1] https://en.wikipedia.org/wiki/Markov_blanket
