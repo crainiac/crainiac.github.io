@@ -5,3 +5,4 @@ By analogy to the mythical brazen head automaton, a generative language model ma
 Inspirations:
 [1] https://arxiv.org/abs/2210.01117
 [2] https://www.crain.dev/2.txt
+[3] https://raw.githubusercontent.com/crainiac/dataheads/main/brazen.png
