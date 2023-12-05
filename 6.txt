@@ -1,4 +1,4 @@
-Markov Blanket Weaving
+Markov Blanket Weaving and Perplexity Trees
 
 Since autoregressive next-token predictor (antp) training is O(inference), using inference to augment training data seems like a promising area of applied research. I'm particularly interested in augmenting training data with representations of what the model has learned to represent; combined with the original data from which the model learned the representations, synthetic training data of this nature may possess desirable regularization properties.
 
@@ -8,7 +8,7 @@ Every N epochs,
 [2] Reverse Smin and Smax to obtain synthetic training sequences Zmin and Zmax.
 [3] Reconstruct the curriculum sequence as Zmin, Zmax, S.
 
-In practice, antps can generate multiple token probabilities in parallel (see, e.g., [4]), so any algorithm implementing this curriculum will probably give us all context-filling minimax paths for free. It's worth daydreaming about what we can do with these minimax perplexity trees and their potential connections to Nash equilibria and Markov boundaries.
+In practice, antps can generate multiple token probabilities in parallel (see, e.g., [4]), so any algorithm implementing this curriculum will probably give us all context-filling minimax paths for free. It's worth daydreaming about what we can do with these perplexity trees and their potential connections to Nash equilibria and Markov boundaries.
 
 Inspirations:
 [1] https://en.wikipedia.org/wiki/Markov_blanket
