@@ -1,0 +1,6 @@
+Autoregressive Next-Token Predictor
+
+I use antp to denote an abstract model of large language models focused on their token prediction capabilities. The work below provides a frame of reference; I should clarify the relevant properties on a per-problem basis
+
+Inspirations:
+[1] https://arxiv.org/abs/2309.06979
