@@ -1,3 +1,0 @@
-Grokking Grokking
-
-Old-school statisticians aren't wrong to think of grokking (https://arxiv.org/abs/2210.01117) as overfitting, but they're missing an important nuance that better captures why it generalizes. Here's a more precise definition: Grokking is the limiting behavior of fitting a model on more data than it has the capacity to memorize.
