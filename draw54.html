@@ -41,7 +41,7 @@
 
     <p>1. The dynamic programming approach takes time \(\Theta\left(\prod_{i=1}^{k}N_i\right)\). Since we must draw at least one card, we obtain the expected value with auxiliary \(\widehat{\mathbb{E}}(N_1, \ldots, N_k) = \sum_{i=1}^{k}{(\mathbb{E}(N_1, \ldots, N_i - 1, \ldots, N_k) + v_i) \mathbb{P}(N_i)}\).</p>
 
-    <p>2. We want to find the minimal \(N_m\) such that \(\mathbb{E}(N_1, \ldots, N_m, \ldots, N_k) > 0\). \(N_m\) is bounded above at \(\widehat{N}_m = 1 - \sum_{i \neq m} \frac{v_i N_i}{v_m}\), and the expected value is a non-decreasing function of \(n_m\), so we can backward-induce \(N_m\) in time \(\Omega\left(\prod_{i \neq m} N_i\right)\) and \(O\left(\widehat{N}_m \prod_{i \neq m} N_i\right)\). Given sub-solutions to \(\mathbb{E}(N_1, \ldots, \widehat{N}_m, \ldots, N_k)\), we could find \(N_m\) by binary search in \(O(\log \widehat{N}_m)\), \(\Omega(1)\) time.</p>
+    <p>2. We want to find the minimal \(N_m\) such that \(\mathbb{E}(N_1, \ldots, N_m, \ldots, N_k) > 0\). \(N_m\) is bounded above at \(\widehat{N}_m = 1 - \sum_{i \neq m} \frac{v_i N_i}{v_m}\), and the expected value is a nondecreasing function of \(n_m\), so we can backward-induce \(N_m\) in time \(\Omega\left(\prod_{i \neq m} N_i\right)\) and \(O\left(\widehat{N}_m \prod_{i \neq m} N_i\right)\). Given subsolutions to \(\mathbb{E}(N_1, \ldots, \widehat{N}_m, \ldots, N_k)\), we could find \(N_m\) by binary search in \(O(\log \widehat{N}_m)\), \(\Omega(1)\) time.</p>
   <p>Here's an implementation for the numbers given in the problem statement:</p>
   <pre>
 #!/usr/bin/env python3
