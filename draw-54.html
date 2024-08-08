@@ -37,11 +37,11 @@
   <div id="solution" class="hidden">
     <p>Consider \(k\) card types with counts in the deck \(n_1, \ldots, n_k\) and values \(v_1, \ldots, v_k\).</p>
 
-    <p>Let \(N_i\), \(1 \leq i \leq k\), be the count of the \(i\)th card type in the deck at the beginning of the game. Our expected value when all cards have been drawn \(\mathbb{E}(0, \ldots, 0) = 0\); from there, we must backward-induct to \(\mathbb{E}(N_1, \ldots, N_k)\). The recursion \(\mathbb{E}(n_1, \ldots, n_k) = \max \left(0, \sum_{i=1}^{k}{(\mathbb{E}(n_1, \ldots, n_i - 1, \ldots, n_k) + v_i) \mathbb{P}(n_i)} \right)\) accounts for optimal stopping, where the probability of drawing a type-\(i\) card \(\mathbb{P}(n_i) = \frac{n_i}{\sum_{j=1}^{k}n_j}\). \((n_i < 0: \mathbb{E}(n_1, \ldots, n_i, \ldots n _k) = 0.)\)</p>
+    <p>Let \(N_i\), \(1 \leq i \leq k\), be the count of the \(i\)th card type in the deck at the beginning of the game. Our expected value when all cards have been drawn \(\mathbb{E}(0, \ldots, 0) = 0\); from there, we must backward-induct to \(\mathbb{E}(N_1, \ldots, N_k)\). The recursion \(\mathbb{E}(n_1, \ldots, n_k) = \max \left(0, \sum_{i=1}^{k}{(\mathbb{E}(n_1, \ldots, n_i - 1, \ldots, n_k) + v_i) \mathbb{P}(n_i)} \right)\) accounts for optimal stopping, where the probability of drawing a type-\(i\) card \(\mathbb{P}(n_i) = n_i/\sum_{j=1}^{k}n_j\). \((n_i < 0: \mathbb{E}(n_1, \ldots, n_i, \ldots n _k) = 0.)\)</p>
 
     <p>1. The dynamic programming approach takes time \(\Theta\left(\prod_{i=1}^{k}N_i\right)\). Since we must draw at least one card, we obtain the expected value with auxiliary \(\widehat{\mathbb{E}}(N_1, \ldots, N_k) = \sum_{i=1}^{k}{(\mathbb{E}(N_1, \ldots, N_i - 1, \ldots, N_k) + v_i) \mathbb{P}(N_i)}\).</p>
 
-    <p>2. We want to find the minimal \(N_m\) such that \(\mathbb{E}(N_1, \ldots, N_m, \ldots, N_k) > 0\). \(N_m\) is bounded above at \(\widehat{N}_m = 1 - \sum_{i \neq m} \frac{v_i N_i}{v_m}\), and the expected value is a nondecreasing function of \(n_m\), so we can backward-induce \(N_m\) in time \(\Omega\left(\prod_{i \neq m} N_i\right)\) and \(O\left(\widehat{N}_m \prod_{i \neq m} N_i\right)\). Given subsolutions to \(\mathbb{E}(N_1, \ldots, \widehat{N}_m, \ldots, N_k)\), we could find \(N_m\) by binary search in \(O(\log \widehat{N}_m)\), \(\Omega(1)\) time.</p>
+    <p>2. We want to find the minimal \(N_m\) such that \(\mathbb{E}(N_1, \ldots, N_m, \ldots, N_k) > 0\). \(N_m\) is bounded above at \(\widehat{N}_m = 1 - \sum_{i \neq m} v_i N_i/v_m\), and the expected value is a nondecreasing function of \(n_m\), so we can backward-induce \(N_m\) in time \(\Omega\left(\prod_{i \neq m} N_i\right)\) and \(O\left(\widehat{N}_m \prod_{i \neq m} N_i\right)\). Given subsolutions to \(\mathbb{E}(N_1, \ldots, \widehat{N}_m, \ldots, N_k)\), we could find \(N_m\) by binary search in \(O(\log \widehat{N}_m)\), \(\Omega(1)\) time.</p>
   <p>Here's an implementation for the numbers given in the problem statement:</p>
   <pre>
 #!/usr/bin/env python3
@@ -51,12 +51,12 @@ from functools import lru_cache
 def expect(counts, values):
     return 0 if any(n < 0 for n in counts) or not any(counts) else max(
         0,
-        sum((expect(counts[:i] + (n - 1, ) + counts[i + 1:], values) + v) * n
+        sum((expect(counts[:i] + (n - 1,) + counts[i + 1:], values) + v) * n
             for i, (n, v) in enumerate(zip(counts, values))) / sum(counts))
 # 1.
 N = tuple(range(10, 1, -1))
 VALUES = tuple(c * 5e9 if c % 2 else -c * 6e9 for c in range(2, 11))
-EXPECT_HAT = sum((expect(N[:i] + (N[i] - 1, ) + N[i + 1:], VALUES) + v) * n
+EXPECT_HAT = sum((expect(N[:i] + (N[i] - 1,) + N[i + 1:], VALUES) + v) * n
                  for i, (n, v) in enumerate(zip(N, VALUES))) / sum(N)
 print('${:,.2f}'.format(EXPECT_HAT))  # $-4,059,165,310.65
 # 2.
