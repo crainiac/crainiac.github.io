@@ -53,13 +53,13 @@ def expect(counts, values):
         0,
         sum((expect(counts[:i] + (n - 1, ) + counts[i + 1:], values) + v) * n
             for i, (n, v) in enumerate(zip(counts, values))) / sum(counts))
-# 1)
+# 1.
 N = tuple(range(10, 1, -1))
 VALUES = tuple(c * 5e9 if c % 2 else -c * 6e9 for c in range(2, 11))
 EXPECT_HAT = sum((expect(N[:i] + (N[i] - 1, ) + N[i + 1:], VALUES) + v) * n
                  for i, (n, v) in enumerate(zip(N, VALUES))) / sum(N)
 print('${:,.2f}'.format(EXPECT_HAT))  # $-4,059,165,310.65
-# 2)
+# 2.
 N_HAT = 1 - sum(n * v for n, v in zip(N, VALUES) if v != VALUES[1]) / VALUES[1]
 for n_m in range(int(N_HAT)):
     if expect((N[0], n_m) + N[2:], VALUES) > 0:
