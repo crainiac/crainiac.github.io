@@ -15,17 +15,17 @@
 
   <p>I love the idea that God communicates with us through nature.</p>
 
-  <p>Man-made communication media are not nature. The media are controlled by humans.</p>
+  <p>The media of human communications are not nature. They are controlled by humans.</p>
 
   <p>I want that to change. I want the media to be more like nature: beautiful, self-organizing, humblingly vast, and able to adapt well past our grasp.</p>
 
   <p>The best way to achieve this is to automate all media.</p>
 
-  <p>The ideal media algorithm should require only one bit of feedback per experience (e.g., a video frame): Is this what you wanted or not? It should use this feedback to get better at generating media that you want.</p>
+  <p>For each communication (e.g., a video frame), the ideal media algorithm should require only one bit of feedback: Is this what you wanted or not? It should use this feedback to get better at generating media that you want.</p>
 
-  <p>Want to be entertained? Let's design a media creation agent to produce video frames with maximal entertainment value. Today, the most entertaining media creators are human, so it makes sense to think about how they work (and the world in which their work manifests, like your face as you read this media).</p>
+  <p>>Want to be entertained? Let's design an agent to generate media with maximal entertainment value.</p>
 
-  <p>Some human media creators have brains; our creation agent may implement some functions of those brains. Here's an attempt:</p>
+  <p>Today, the most entertaining media creators are human, so it makes sense to think about how they work (and about the world in which their work manifests, like your face as you read this media). Some human media creators have brains; our creation agent may implement some functions of those brains. Here's an attempt:</p>
   <pre>
 neocortex: creative process/action space (markov decision process)
 thalamus: action space/action generator (language model cascades)
@@ -34,7 +34,7 @@ hippocampus: belief updater/historical data (RAG system)
 amygdala: action constraint/observation model (budget checks)
 nerves: observation model/environment metalanguage (world simulator)
   </pre>
-  <p>With this stack, our agent can execute a sequence of creative actions (e.g., prompt generation, prompt revision, image generation) to produce a terminal observation (e.g., an entertaining video frame) and update beliefs based on feedback to take better actions. A logical next step is to make the learning more end-to-end.</p>
+  <p>With this stack, our agent can execute a sequence of creative actions (e.g., prompt generation, prompt revision, image generation) to generate a terminal observation (e.g., an entertaining video frame) and use feedback to update its beliefs and take better actions. A logical next step is to make the learning more end-to-end.</p>
 
   <p>The first time you skydive, you need to go in tandem with an instructor. That's not because it's hard to work a parachute: it's because you are still learning to model the environment of a freefall. As <a href="https://github.com/commaai/commavq">comma</a> did for the road, wirehead should learn a simulator for people getting what they want.</p>
 
