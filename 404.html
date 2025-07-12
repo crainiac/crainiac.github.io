@@ -1,7 +1,23 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>>crain 404</title>
+  <meta charset="utf-8">
+  <title>>crain</title>
+  <script type="module">
+    import yaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/+esm';
+    const slug = location.pathname.slice(1);
+    fetch('/redirects.yaml')
+      .then(r => r.ok ? r.text() : null)
+      .then(t => {
+        if (!t) return;
+        const map = yaml.load(t);
+        const dest = map?.[slug];
+        if (dest) location.replace(dest);
+      })
+      .catch(console.error);
+  </script>
 </head>
-<img src="comb_gray.svg"/>
+<body>
+  <img src="comb_gray.svg" alt="404">
+</body>
 </html>
