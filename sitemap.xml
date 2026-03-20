@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- love letter -->
     <url>
-        <loc>https://crain.dev/gf.html</loc>
+        <!-- sonic textures, semantically substrated -->
+        <loc>https://crain.dev/hewings.html</loc>
     </url>
-    <!-- on automating oration -->
     <url>
-        <loc>https://crain.dev/prolix.html</loc>
-    </url>
-    <!-- contemporary american politics -->
-    <url>
-        <loc>https://crain.dev/kyc.html</loc>
-    </url>
-    <!-- product brainstorm -->
-    <url>
-        <loc>https://crain.dev/wirehead.html</loc>
-    </url>
-    <!-- digital derealization -->
-    <url>
-        <loc>https://crain.dev/com.html</loc>
-    </url>
-    <!-- sysprompt for a manager simulator -->
-    <url>
-        <loc>https://crain.dev/pmc.html</loc>
-    </url>
-    <!-- sorta-spooky short story -->
-    <url>
-        <loc>https://crain.dev/personalization.html</loc>
-    </url>
-    <!-- alignment is personal -->
-    <url>
-        <loc>https://crain.dev/storm.html</loc>
-    </url>
-    <!-- optimal stopping problem -->
-    <url>
-        <loc>https://crain.dev/draw-54.html</loc>
-    </url>
-    <!-- poem in 26 words -->
-    <url>
+        <!-- poem in 26 words -->
         <loc>https://crain.dev/abcdefghijklmnopqrstuvwxyz.html</loc>
     </url>
-    <!-- sonic textures, semantically substrated -->
     <url>
-        <loc>https://crain.dev/hewings.html</loc>
+        <!-- optimal stopping problem -->
+        <loc>https://crain.dev/draw-54.html</loc>
+    </url>
+    <url>
+        <!-- alignment is personal -->
+        <loc>https://crain.dev/storm.html</loc>
+    </url>
+    <url>
+        <!-- sorta-spooky short story -->
+        <loc>https://crain.dev/personalization.html</loc>
+    </url>
+    <url>
+        <!-- sysprompt for a manager simulator -->
+        <loc>https://crain.dev/pmc.html</loc>
+    </url>
+    <url>
+        <!-- digital derealization -->
+        <loc>https://crain.dev/com.html</loc>
+    </url>
+    <url>
+        <!-- product brainstorm -->
+        <loc>https://crain.dev/wirehead.html</loc>
+    </url>
+    <url>
+        <!-- contemporary american politics -->
+        <loc>https://crain.dev/kyc.html</loc>
+    </url>
+    <url>
+        <!-- on automating oration -->
+        <loc>https://crain.dev/prolix.html</loc>
+    </url>
+    <url>
+        <!-- love letter -->
+        <loc>https://crain.dev/gf.html</loc>
     </url>
 </urlset>
