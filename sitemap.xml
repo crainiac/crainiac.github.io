@@ -13,10 +13,6 @@
         <loc>https://crain.dev/draw-54.html</loc>
     </url>
     <url>
-        <!-- alignment is personal -->
-        <loc>https://crain.dev/storm.html</loc>
-    </url>
-    <url>
         <!-- sorta-spooky short story -->
         <loc>https://crain.dev/personalization.html</loc>
     </url>
@@ -39,9 +35,5 @@
     <url>
         <!-- on automating oration -->
         <loc>https://crain.dev/prolix.html</loc>
-    </url>
-    <url>
-        <!-- love letter -->
-        <loc>https://crain.dev/gf.html</loc>
     </url>
 </urlset>
