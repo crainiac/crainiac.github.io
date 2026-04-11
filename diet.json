@@ -1,6 +1,6 @@
 [
-  {"date": "2026-04-08", "calories": 513, "protein": 78},
-  {"date": "2026-04-09", "calories": 865, "protein": 134},
-  {"date": "2026-04-10", "calories": 1041, "protein": 150}
+  {"date": "2026-04-08", "calories": 513, "protein": 78, "lbs": 193},
+  {"date": "2026-04-09", "calories": 865, "protein": 134, "lbs": 193},
+  {"date": "2026-04-10", "calories": 1041, "protein": 150, "lbs": 193}
 ]
 
