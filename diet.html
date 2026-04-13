@@ -1,0 +1,166 @@
+<!doctype HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Crain">
+  <title>>crain diet</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #fff;
+      color: #111;
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 28px;
+    }
+
+    .chart-box {
+      height: 520px;
+    }
+
+    .error {
+      color: #b00020;
+      white-space: pre-wrap;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>diet</h1>
+    <div class="chart-box">
+      <canvas id="dietChart"></canvas>
+    </div>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    async function main() {
+      const errorEl = document.getElementById('error');
+
+      try {
+        const res = await fetch('/diet.json', { cache: 'no-store' });
+        if (!res.ok) {
+          throw new Error(`failed to load diet.json: ${res.status} ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        data.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const labels = data.map(d => d.date);
+
+        new Chart(document.getElementById('dietChart'), {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'calories',
+                data: data.map(d => d.calories),
+                yAxisID: 'y',
+                borderColor: 'rgba(230, 57, 70, 0.35)',
+                backgroundColor: '#e63946',
+                pointBackgroundColor: '#e63946',
+                pointBorderColor: '#e63946',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                borderWidth: 1.5,
+                tension: 0.2
+              },
+              {
+                label: 'protein',
+                data: data.map(d => d.protein),
+                yAxisID: 'y1',
+                borderColor: 'rgba(69, 123, 157, 0.35)',
+                backgroundColor: '#457b9d',
+                pointBackgroundColor: '#457b9d',
+                pointBorderColor: '#457b9d',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                borderWidth: 1.5,
+                tension: 0.2
+              },
+              {
+                label: 'weight',
+                data: data.map(d => d.weight),
+                yAxisID: 'y1',
+                borderColor: 'rgba(42, 157, 143, 0.35)',
+                backgroundColor: '#2a9d8f',
+                pointBackgroundColor: '#2a9d8f',
+                pointBorderColor: '#2a9d8f',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                borderWidth: 1.5,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
+            plugins: {
+              legend: {
+                position: 'top'
+              },
+              tooltip: {
+                callbacks: {
+                  title(items) {
+                    return items[0].label;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'date'
+                }
+              },
+              y: {
+                type: 'linear',
+                position: 'left',
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'calories'
+                }
+              },
+              y1: {
+                type: 'linear',
+                position: 'right',
+                beginAtZero: true,
+                grid: {
+                  drawOnChartArea: false
+                },
+                title: {
+                  display: true,
+                  text: 'protein / weight'
+                }
+              }
+            }
+          }
+        });
+      } catch (err) {
+        errorEl.textContent = String(err);
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
