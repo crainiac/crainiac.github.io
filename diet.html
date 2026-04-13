@@ -64,7 +64,7 @@
             labels,
             datasets: [
               {
-                label: 'calories',
+                label: 'calories (kcal)',
                 data: data.map(d => d.calories),
                 yAxisID: 'y',
                 borderColor: 'rgba(230, 57, 70, 0.35)',
@@ -77,7 +77,7 @@
                 tension: 0.2
               },
               {
-                label: 'protein',
+                label: 'protein (g)',
                 data: data.map(d => d.protein),
                 yAxisID: 'y1',
                 borderColor: 'rgba(69, 123, 157, 0.35)',
@@ -90,7 +90,7 @@
                 tension: 0.2
               },
               {
-                label: 'weight',
+                label: 'weight (lb)',
                 data: data.map(d => d.weight),
                 yAxisID: 'y1',
                 borderColor: 'rgba(42, 157, 143, 0.35)',
