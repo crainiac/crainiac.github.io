@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Crain">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src blob: data:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+ <title>>crain metastrip</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;background:#fafafa}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px}
+main{width:min(560px,100%);background:white;border:1px solid #ddd;border-radius:22px;padding:22px;box-shadow:0 20px 70px #0001}
+h1{font-size:28px;line-height:1;margin:0 0 8px;text-transform:lowercase;letter-spacing:-.03em}
+p{margin:8px 0;color:#444;line-height:1.4}
+small{color:#666}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+button,.button,a.button{appearance:none;border:0;border-radius:14px;background:#111;color:#fff;padding:13px 16px;font:600 16px/1 inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;cursor:pointer}
+button.secondary,.button.secondary{background:#f1f1f1;color:#111;border:1px solid #ddd}
+button:disabled,.button.disabled{opacity:.42;pointer-events:none}
+input[type=file]{position:absolute;inline-size:1px;block-size:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+#status{margin-top:16px;white-space:pre-wrap;color:#222}
+#preview{display:none;margin-top:16px;max-width:100%;border-radius:16px;border:1px solid #eee;background:#eee}
+#log{margin-top:14px;padding:12px;border-radius:14px;background:#f7f7f7;color:#333;font:13px/1.35 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+hr{border:0;border-top:1px solid #eee;margin:18px 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>metastrip</h1>
+  <p>pick an image. metadata is stripped locally. nothing is uploaded.</p>
+  <div class="row">
+    <label class="button" for="pick">strip image</label>
+    <input id="pick" type="file" accept="image/*">
+    <a id="download" class="button secondary disabled" download>download</a>
+    <button id="share" class="secondary" disabled>share</button>
+  </div>
+  <img id="preview" alt="stripped preview">
+  <div id="status">ready.</div>
+  <div id="log">supports lossless container-strip for jpeg, png, webp, gif. unsupported browser-decodable still images fall back to png re-encode.</div>
+</main>
+<script>
+(() => {
+'use strict';
+
+const $ = id => document.getElementById(id);
+const pick = $('pick');
+const status = $('status');
+const log = $('log');
+const download = $('download');
+const share = $('share');
+const preview = $('preview');
+let lastUrl = null;
+let lastFile = null;
+
+const ascii = (u8, off, len) => {
+  let s = '';
+  for (let i = 0; i < len && off + i < u8.length; i++) s += String.fromCharCode(u8[off + i]);
+  return s;
+};
+const u16be = (u8, p) => (u8[p] << 8) | u8[p + 1];
+const u32be = (u8, p) => ((u8[p] * 0x1000000) + ((u8[p + 1] << 16) | (u8[p + 2] << 8) | u8[p + 3])) >>> 0;
+const u32le = (u8, p) => (u8[p] | (u8[p + 1] << 8) | (u8[p + 2] << 16) | (u8[p + 3] << 24)) >>> 0;
+const putU32le = (u8, p, n) => { u8[p] = n & 255; u8[p + 1] = (n >>> 8) & 255; u8[p + 2] = (n >>> 16) & 255; u8[p + 3] = (n >>> 24) & 255; };
+const concat = parts => {
+  const n = parts.reduce((a, b) => a + b.length, 0);
+  const out = new Uint8Array(n);
+  let p = 0;
+  for (const part of parts) { out.set(part, p); p += part.length; }
+  return out;
+};
+const extOf = name => {
+  const m = /\.([a-z0-9]+)$/i.exec(name || '');
+  return m ? m[1].toLowerCase() : '';
+};
+const baseOf = name => (name || 'image').replace(/\.[^.]*$/, '') || 'image';
+const fmtBytes = n => n < 1024 ? `${n} b` : n < 1048576 ? `${(n/1024).toFixed(1)} kb` : `${(n/1048576).toFixed(2)} mb`;
+
+function sniff(u8, file) {
+  if (u8[0] === 0xff && u8[1] === 0xd8) return {kind:'jpeg', mime:'image/jpeg', ext:'jpg'};
+  if (u8[0] === 0x89 && ascii(u8,1,3) === 'PNG' && u8[4] === 13 && u8[5] === 10 && u8[6] === 26 && u8[7] === 10) return {kind:'png', mime:'image/png', ext:'png'};
+  if (ascii(u8,0,4) === 'RIFF' && ascii(u8,8,4) === 'WEBP') return {kind:'webp', mime:'image/webp', ext:'webp'};
+  if (ascii(u8,0,3) === 'GIF') return {kind:'gif', mime:'image/gif', ext:'gif'};
+  const e = extOf(file.name);
+  return {kind:'unknown', mime:file.type || 'application/octet-stream', ext:e || 'png'};
+}
+
+function stripJPEG(u8) {
+  if (!(u8[0] === 0xff && u8[1] === 0xd8)) throw Error('not jpeg');
+  const parts = [u8.subarray(0, 2)];
+  let p = 2;
+  while (p < u8.length) {
+    const markerStart = p;
+    if (u8[p] !== 0xff) { parts.push(u8.subarray(p)); break; }
+    while (p < u8.length && u8[p] === 0xff) p++;
+    if (p >= u8.length) break;
+    const marker = u8[p++];
+    if (marker === 0xda) { parts.push(u8.subarray(markerStart)); break; } // sos: entropy data follows
+    if (marker === 0xd9 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) {
+      parts.push(u8.subarray(markerStart, p));
+      continue;
+    }
+    if (p + 2 > u8.length) throw Error('truncated jpeg');
+    const len = u16be(u8, p);
+    if (len < 2 || p + len > u8.length) throw Error('bad jpeg segment');
+    const end = p + len;
+    const drop = (marker >= 0xe0 && marker <= 0xef) || marker === 0xfe; // app0-app15 + comment
+    if (!drop) parts.push(u8.subarray(markerStart, end));
+    p = end;
+  }
+  return concat(parts);
+}
+
+function stripPNG(u8) {
+  const sig = [0x89,80,78,71,13,10,26,10];
+  if (!sig.every((b,i)=>u8[i]===b)) throw Error('not png');
+  const parts = [u8.subarray(0,8)];
+  const drop = new Set(['eXIf','iCCP','tEXt','zTXt','iTXt','tIME','pHYs']);
+  let p = 8;
+  while (p + 12 <= u8.length) {
+    const len = u32be(u8, p);
+    const type = ascii(u8, p + 4, 4);
+    const end = p + 12 + len;
+    if (end > u8.length) throw Error('bad png chunk');
+    if (!drop.has(type)) parts.push(u8.subarray(p, end));
+    p = end;
+    if (type === 'IEND') break;
+  }
+  return concat(parts);
+}
+
+function stripWEBP(u8) {
+  if (!(ascii(u8,0,4) === 'RIFF' && ascii(u8,8,4) === 'WEBP')) throw Error('not webp');
+  const parts = [u8.subarray(0,12)];
+  const drop = new Set(['EXIF','XMP ','ICCP']);
+  let p = 12;
+  while (p + 8 <= u8.length) {
+    const type = ascii(u8, p, 4);
+    const len = u32le(u8, p + 4);
+    const dataEnd = p + 8 + len;
+    const end = dataEnd + (len & 1);
+    if (end > u8.length) throw Error('bad webp chunk');
+    if (!drop.has(type)) {
+      if (type === 'VP8X' && len >= 10) {
+        const c = u8.slice(p, end);
+        c[8] &= ~(0x20 | 0x08 | 0x04); // clear icc/exif/xmp-present flags
+        parts.push(c);
+      } else {
+        parts.push(u8.subarray(p, end));
+      }
+    }
+    p = end;
+  }
+  const out = concat(parts);
+  putU32le(out, 4, out.length - 8);
+  return out;
+}
+
+function skipGifSubBlocks(u8, p) {
+  while (p < u8.length) {
+    const n = u8[p++];
+    if (n === 0) return p;
+    p += n;
+  }
+  throw Error('truncated gif sub-blocks');
+}
+function stripGIF(u8) {
+  if (ascii(u8,0,3) !== 'GIF') throw Error('not gif');
+  if (u8.length < 13) throw Error('truncated gif');
+  let p = 13;
+  if (u8[10] & 0x80) p += 3 * (1 << ((u8[10] & 7) + 1));
+  if (p > u8.length) throw Error('bad gif color table');
+  const parts = [u8.subarray(0,p)];
+  while (p < u8.length) {
+    const start = p;
+    const b = u8[p++];
+    if (b === 0x3b) { parts.push(u8.subarray(start, p)); break; }
+    if (b === 0x2c) {
+      if (p + 9 > u8.length) throw Error('bad gif image');
+      p += 9;
+      if (u8[p - 1] & 0x80) p += 3 * (1 << ((u8[p - 1] & 7) + 1));
+      if (p >= u8.length) throw Error('bad gif image data');
+      p++; // lzw min code size
+      p = skipGifSubBlocks(u8, p);
+      parts.push(u8.subarray(start, p));
+      continue;
+    }
+    if (b === 0x21) {
+      if (p >= u8.length) throw Error('bad gif extension');
+      const label = u8[p++];
+      const appId = label === 0xff && u8[p] === 11 ? ascii(u8, p + 1, 11) : '';
+      p = skipGifSubBlocks(u8, p);
+      const isComment = label === 0xfe;
+      const isKnownMetadataApp = /^XMP DataXMP|^ICCRGBG1012/i.test(appId);
+      if (!isComment && !isKnownMetadataApp) parts.push(u8.subarray(start, p));
+      continue;
+    }
+    throw Error('bad gif block');
+  }
+  return concat(parts);
+}
+
+async function canvasFallback(file) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((resolve, reject) => {
+      const im = new Image();
+      im.onload = () => resolve(im);
+      im.onerror = () => reject(Error('browser cannot decode this image'));
+      im.src = url;
+    });
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth || img.width;
+    c.height = img.naturalHeight || img.height;
+    const ctx = c.getContext('2d', {alpha:true});
+    ctx.drawImage(img, 0, 0);
+    const blob = await new Promise((resolve, reject) => c.toBlob(b => b ? resolve(b) : reject(Error('png encode failed')), 'image/png'));
+    return {blob, mime:'image/png', ext:'png', note:'fallback png re-encode; metadata removed, file type changed'};
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+async function process(file) {
+  if (!file) return;
+  reset(false);
+  status.textContent = 'stripping...';
+  try {
+    const src = new Uint8Array(await file.arrayBuffer());
+    const fmt = sniff(src, file);
+    let out, mime = fmt.mime, ext = fmt.ext, note = 'container stripped; pixels/compressed image data preserved where this format permits';
+    if (fmt.kind === 'jpeg') out = stripJPEG(src);
+    else if (fmt.kind === 'png') out = stripPNG(src);
+    else if (fmt.kind === 'webp') out = stripWEBP(src);
+    else if (fmt.kind === 'gif') out = stripGIF(src);
+    else {
+      const fb = await canvasFallback(file);
+      lastFile = new File([fb.blob], `${baseOf(file.name)}-metastrip.${fb.ext}`, {type: fb.mime});
+      return showResult(file, lastFile, fb.note);
+    }
+    lastFile = new File([out], `${baseOf(file.name)}-metastrip.${ext}`, {type: mime});
+    showResult(file, lastFile, note);
+  } catch (e) {
+    reset(false);
+    status.textContent = `could not strip this file. ${e.message || e}`;
+    log.textContent = 'try jpeg, png, webp, or gif. heic usually needs fallback decode support or a native app.';
+  }
+}
+
+function showResult(srcFile, outFile, note) {
+  if (lastUrl) URL.revokeObjectURL(lastUrl);
+  lastUrl = URL.createObjectURL(outFile);
+  download.href = lastUrl;
+  download.download = outFile.name;
+  download.classList.remove('disabled');
+  preview.src = lastUrl;
+  preview.style.display = 'block';
+  const saved = srcFile.size - outFile.size;
+  status.textContent = `done: ${outFile.name}\n${fmtBytes(srcFile.size)} → ${fmtBytes(outFile.size)}${saved > 0 ? `, stripped ${fmtBytes(saved)}` : ''}`;
+  log.textContent = note;
+  updateShare();
+}
+
+function updateShare() {
+  const ok = !!(lastFile && navigator.share && (!navigator.canShare || navigator.canShare({files:[lastFile]})));
+  share.disabled = !ok;
+}
+function reset(clearInput=true) {
+  if (lastUrl) URL.revokeObjectURL(lastUrl);
+  lastUrl = null; lastFile = null;
+  download.removeAttribute('href'); download.removeAttribute('download'); download.classList.add('disabled');
+  share.disabled = true;
+  preview.removeAttribute('src'); preview.style.display = 'none';
+  if (clearInput) pick.value = '';
+}
+
+pick.addEventListener('change', () => process(pick.files && pick.files[0]));
+download.addEventListener('click', ev => { if (!lastFile) ev.preventDefault(); });
+share.addEventListener('click', async () => {
+  if (!lastFile) return;
+  try { await navigator.share({files:[lastFile], title:'metastrip', text:'metadata-free image'}); }
+  catch (_) {}
+});
+window.addEventListener('pagehide', () => { if (lastUrl) URL.revokeObjectURL(lastUrl); });
+})();
+</script>
+</body>
+</html>
