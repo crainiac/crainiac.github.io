@@ -5,8 +5,8 @@
   <title>>crain</title>
   <style>
     html {
-      background-color: #191919;
-      scrollbar-color: #9b9b9b #191919;
+      background-color: rgb(7.582162324047929 16.482266104839134 58.18249657216238);
+      scrollbar-color: rgb(196.7556998394682, 125.8674411130793, 152.88516384715038) rgb(7.582162324047929 16.482266104839134 58.18249657216238);
     }
     body {
       margin: 0 auto;
@@ -39,7 +39,7 @@
       } catch (err) {
         console.error(err);
       }
-      const r = await fetch('/comb_gray.svg');
+      const r = await fetch('/comb.svg');
       if (!r.ok) throw new Error('failed to load svg');
       document.body.innerHTML = await r.text();
       document.body.classList.add('ready');
