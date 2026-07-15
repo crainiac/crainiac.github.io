@@ -9,6 +9,7 @@
   "chthonic": "https://github.com/crainiac/chthonic",
   "cjira": "https://consilient.atlassian.net/jira/software/c/projects/CSD/list",
   "cmb": "https://consilient-model-browser.azurewebsites.net/",
+  "cms": "https://portal.azure.com/#@dev.consilient.com/resource/subscriptions/0ad90f2c-128d-455c-9c52-19abef347b89/resourceGroups/JeffDataStorage/providers/Microsoft.Storage/storageAccounts/consilientmanualstorage/storagebrowser",
   "cplan": "https://github.com/ConsilientInc/plans",
   "cw": "https://consilient.com/wp-admin/",
   "dates": "https://crain.dev/dates.txt",
