@@ -36,7 +36,7 @@ Mix with 11% salt by total weight and cover. Keep at room temp ~1 week, stirring
 Amakoji
 ~ 1 cup koji rice
 ~ 1 cup water
-Hold at 330 kelvins for ~12 hours (e.g., sous vide). Chill.
+Hold at 330 K for ~12 hours (e.g., sous vide). Chill.
 
 Amakoji Ajitama
 ~ 6 eggs
@@ -45,7 +45,7 @@ Amakoji Ajitama
 ~ 1/4 cup nama shoyu
 ~ 1 tbsp Hakko Shojin-eki
 ~ 1 tbsp red miso paste
-Blend all ingredients besides eggs. Hold eggs from fridge at 360 kelvins for 6 minutes (e.g., sous vide). Chill in ice bath and peel. Marinate in remaining ingredients ~12 hours, refrigerated, turning occasionally.
+Blend all ingredients besides eggs. Hold eggs from fridge at 360 K for 6 minutes (e.g., sous vide). Chill in ice bath and peel. Marinate in remaining ingredients ~12 hours, refrigerated, turning occasionally.
 
 Haburajiao
 ~ 20 habaneros, stemmed
@@ -140,4 +140,4 @@ Khoresh Bademjanasu Dengaku
 ~ 1 lb cherry tomatoes
 ~ 1 g saffron, crushed
 ~ 1 lb lamb shoulder, bone-in
-Vacuum-seal half of the eggplant with 2% pickling salt by weight; repeat separately with half of the tomato. Ferment each for a week at room temperature. Puree eggplant ferment. Strain tomato ferment, reserving solids and brine. Marinate lamb in tomato brine overnight, then slow-cook half-covered in water on low until tender. Near the end, skim rendered lamb fat and reserve; use some lamb stock to bloom saffron. Score the unfermented eggplant, brush with lamb fat, and roast cut-side down at 425 F until tender, about 20 min. Turn cut-side up, pack fermented tomato solids into the scoring, and broil on high until browned. Fry the unfermented tomato in lamb fat until blistered and beginning to burst. Remove lamb and turn off slow cooker. Pour bloomed saffron into the lamb stock; mix in eggplant puree to taste. Add lamb, glazed eggplant, and fried tomato.
+Vacuum-seal half of the eggplant with 2% pickling salt by weight; repeat separately with half of the tomato. Ferment each for a week at room temperature. Puree eggplant ferment. Strain tomato ferment, reserving solids and brine. Marinate lamb in tomato brine overnight, then slow-cook half-covered in water on low until tender. Near the end, skim rendered lamb fat and reserve; use some lamb stock to bloom saffron. Score the unfermented eggplant, brush with lamb fat, and roast cut-side down at 490 K until tender, about 20 min. Turn cut-side up, pack fermented tomato solids into the scoring, and broil on high until browned. Fry the unfermented tomato in lamb fat until blistered and beginning to burst. Remove lamb and turn off slow cooker. Pour bloomed saffron into the lamb stock; mix in eggplant puree to taste. Add lamb, glazed eggplant, and fried tomato.
