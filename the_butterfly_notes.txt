@@ -1,0 +1,17 @@
+[these are scattered notes/ideas/vibes for brainstorming a novella, not some random schizo thing, lol]
+michael levin - lex #486, butterfly, scientific animism, use vibes from his theories of intelligence to narrate the story from the alien mind with traces of the butterfly that's ended up in the final organism
+hans moravec - mind uploading connection to butterfly (much more visceral than typical mind uploading scenarios, totally new take, no clean abstract digitization, very messy and embodied), mind fire - where does metamorphosis fit into moravec's paradox (evolutionarily later than reproduction, obviously)?
+obsession - but then, but then . . .
+von neumann - prediction of dna
+the odyssey - family is everything; "return" "home" to your mind children
+a taste - automated factory farm hacked by brainwash to liquidate PE competitor that acquired the farm + get an in with V to subvert Moloch/AI safetyism + covertly conduct metamorphosis experiments [hack not revealed until after brainwash's identity is revealed; presumed reward function mishap; brainwash doesn't reveal he did this to V until later evil reveal, after earlier "ethical hacker" reveal]
+the butterfly - catherine boratynsky (caterpillar -> butterfly), animal welfare protestor, last survivor of factory farm incident, some cool parallels to catherine of alexandria and perhaps yevgeny baratynsky) ("as per her legend, a milk-like substance rather than blood flowed from her neck"; "angels tended her wounds with salve"); begin with odyssey parallel (?), begin with catherine + her fellow protestors meeting obsoleted farmers who it turns out also went there to free the animals and vandalize the place (lol)
+frank von economo ("V") - sort of an AI super-oppenheimer, more powerful and influential than public world leaders; rival used and inverted to eve by brainwash; brainwash cammarata-blasts the minimally necessary neurons at the minimally necessary times to make eve behave happily about everything while maintaining full awareness/fluency
+waterson overseas merchant banking
+brainwash - takes "change the world" much more seriously than any hacker in history; master plan is to "change" the universe; has contempt for the "bikeshedim" AI safetyists/Molock
+
+The Butterfly - robo-insectoid angel imagery
+
+Half 1: A Taste ?
+"The event happened at 03:14:08 UTC on 19 January 2038 [put it in Eastern time]." brainwash frames this as a unix rollover bug messing up safety guardrails which somehow gets waterson clout with Moloch for figuring it out like feynman with the challenger (make that comparison explicitly). the popular press calls it the "taste incident", perpetuates an urban legend that the reinforcement learning algo got a taste for human blood or something, analogously to hunter legends about animals. totally sinks rival PE firm to waterson, symbolic PR nightmare. elites think this is silly, but the irony is that that's closer to the truth. but what brainwash actually did is even crazier, he created silicon life at that exact moment, AI that can do everything a human can, at the root node of moravec's paradox: reproduction (he waxes poetic about this later). this realization of von neumann replication turns out to be a little messy; the substrate is the protestors in the farm.
+Half 2: The Hearth ?
