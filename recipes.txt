@@ -61,12 +61,11 @@ Hakko Shojin Dashi
 ~ 5 g kombu
 Freeze shiitakes overnight. Vacuum seal with kombu and 2% salt by weight. Ferment at room temperature 2-3 weeks. Strain. Try some drops on chutoro.
 
-Shiitake Shio Koji
-~ 1 cup dried donko
-~ 1 cup dried rice koji
-~ 1 1/2 cups water
-~ 5 g kombu
-Soak donko and kombu in water overnight, refrigerated. Remove kombu; mince donko and return to soaking liquid. Heat to 350 K; rest covered ~10 minutes, then simmer ~5 minutes. Replace evaporated water. Cool. Mix in koji and 11% salt by weight. Hold at 333 K ~8 hours (e.g., sous vide), stirring occasionally. Refrigerate.
+Sour Miso Soup
+~ 1 cup dried bonito flakes
+~ 4 tbsp red miso paste
+~ 2 tbsp Hakko Shojin Dashi
+Boil 4 cups of water and add bonito. Return to boil, skimming foam, and then immediately reduce heat, simmering for 30 seconds before turning off heat. Let bonito sink to bottom (~10 min), strain, and diffuse miso into liquid through a tea strainer. Finish with Hakko Shojin Dashi.
 
 Amakoji
 ~ 1 cup dried rice koji
@@ -77,7 +76,15 @@ Amakoji Ajitama
 ~ 6 soft-boiled eggs, peeled
 ~ 1/2 cup Amakoji
 ~ 1/4 cup nama shoyu
-Cover eggs in Amakoji and shoyu. Marinate 6-12 hours, refrigerated.
+~ 1/4 cup Sour Miso Soup
+Cover eggs in remaining ingredients and marinate 1-2 days, refrigerated.
+
+Shiitake Shio Koji
+~ 1 cup dried donko
+~ 1 cup dried rice koji
+~ 1 1/2 cups water
+~ 5 g kombu
+Soak donko and kombu in water overnight, refrigerated. Remove kombu; mince donko and return to soaking liquid. Heat to 350 K; rest covered ~10 minutes, then simmer ~5 minutes. Replace evaporated water. Cool. Mix in koji and 11% salt by weight. Hold at 333 K ~8 hours (e.g., sous vide), stirring occasionally. Refrigerate.
 
 Haburajiao Veraxia
 ~ 20 habaneros, stemmed
