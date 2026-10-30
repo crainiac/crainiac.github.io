@@ -1,0 +1,13 @@
+there are several things that make me happy when i do them that i feel i do not do enough, such that i believe i would be happier if i did them more, and which i can do entirely on my own:
+* ordering my living space (decluttering/tidying/cleaning)
+* resistance training
+* posing and solving puzzles, especially as works of art (e.g., a song or story or picture)
+* listening to music
+* walking long distances, especially to new places
+* reading physical books
+* learning practical things in a "driven by compression progress" way
+
+i wonder if i can build something that would encourage these behaviors in myself, and perhaps help me to discover new behaviors that would be similarly beneficial to my happiness. it seems to me that a good place to start would be to audit how i currently spend my time and decide what i am glad i am doing and what i am not glad i am doing, thereby rendering as many of my unconscious choices conscious as possible.
+
+i spend a lot of time on my phone (too much, i feel, such that i believe i would be happier if i did it less), so perhaps a good place to start is to redirect the phone's powers of diversion toward auditing how i am spending my time, planning more time for the behaviors which i consciously prefer, and reminding me to engage in those behaviors. i can imagine a software product that does this, perhaps by presenting me with my screen time breakdown and other relevant information, leveraging the calendar and notifications for my benefit, etc. i could open-source it in case other people find it useful, too.
+
