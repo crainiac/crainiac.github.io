@@ -1,36 +1,22 @@
-DUMBBELL HYPERTROPHY SPLIT
-Daily entries = sets x reps. Weekly totals = sets / target reps.
-Single-leg/single-arm exercises: sets and reps are per side.
+mon / wed / fri - upper
+flat bench press                 4 x 10
+tripod row                       4 x 10
+arnold press                     3 x 10
+lateral raise                    2 x 15
+curl                             2 x 12
 
-exercise                         mon    tue    thu    fri    weekly
----------------------------------------------------------------------
-flat bench press                 6x10   -      6x10   -      12 / 120
-tripod row                       6x10   -      6x10   -      12 / 120
-arnold press                     4x10   -      5x10   -       9 / 90
-lateral raise                    3x15   -      3x15   -       6 / 90
-curl                             3x12   -      3x12   -       6 / 72
-bulgarian split squat            -      5x10   -      4x10    9 / 90
-single-leg romanian deadlift     -      4x10   -      5x10    9 / 90
-single-leg standing calf raise   -      3x15   -      3x15    6 / 90
-weighted floor crunch            -      3x12   -      3x12    6 / 72
+tue / thu / sat - lower
+bulgarian split squat            3 x 10
+single-leg romanian deadlift     3 x 10
+single-leg standing calf raise   2 x 15
+weighted floor crunch            2 x 12
 
-REST DAYS
-Wednesday, Saturday, Sunday.
+sun - rest
 
-EXERCISE ORDER
-Follow the table from top to bottom, except:
-Thursday: rows before bench press.
-Friday: romanian deadlifts before split squats.
+all entries = working sets x reps.
+unilateral exercises: all counts are per side.
 
-EFFORT
-Finish each set with 2 clean reps remaining.
-Warmup sets are additional.
+effort: finish with 2 clean reps remaining.
+rest: 3 minutes for compound lifts; 2 for the others.
+increase weight when all sets become easier than that target.
 
-REST BETWEEN SETS
-3 minutes: bench, row, arnold press, split squat, romanian deadlift.
-2 minutes: lateral raise, curl, calf raise, crunch.
-For unilateral work, measure rest before repeating the same side.
-
-PROGRESSION
-Increase weight when every prescribed set finishes with more
-than 2 reps remaining. Adjust load to preserve clean technique.
